@@ -18,6 +18,8 @@ namespace Client
                 .UseStartup<Startup>()
                 .Build();
 
+
+
             host.Run();
         }
     }
