@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Client
+namespace AngularClient
 {
     public class Program
     {
@@ -17,8 +17,6 @@ namespace Client
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-
-
 
             host.Run();
         }
