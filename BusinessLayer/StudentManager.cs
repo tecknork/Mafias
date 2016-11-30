@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class Class1
+    public static class StudentManager
     {
+        public static bool AddNewStudent()
+        {
+
+
+            return false;
+        }
+            
     }
 }
