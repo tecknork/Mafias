@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataLayer.Repository;
+using DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +8,22 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public static class StudentManager
+    public  class StudentManager : IStudentManager
     {
-        public static bool AddNewStudent()
+        private readonly StudentRepository _sUnitOfwork;
+
+        public StudentManager()
         {
-
-
-            return false;
+            _sUnitOfwork = new StudentRepository();
         }
-            
+
+        public Student Get(string i)
+        {
+            var student= _sUnitOfwork.GetStudent(i);
+
+            return new Student().convert(student);
+        }
+
+      
     }
 }
