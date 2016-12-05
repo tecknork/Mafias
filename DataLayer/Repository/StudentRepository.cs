@@ -17,7 +17,24 @@ namespace DataLayer.Repository
             return variable;
         }
 
-     
+      
+        public List<MStudent> GetAll()
+        {
+            var enumrator = this.GetEnumerator();
 
+            var list = new List<MStudent>();
+            while (enumrator.MoveNext())
+            {
+                list.Add(enumrator.Current);
+            }
+            return list;
+           
+
+        }
+        public string Insert(MStudent m)
+        {
+            var newStudent = this.Add(m);
+            return newStudent.Id;
+        }
     }
 }

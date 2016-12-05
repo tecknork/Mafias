@@ -9,9 +9,9 @@ namespace BusinessLayer
 {
  public interface IStudentManager
     {
-      //  void Insert(Student student);
+          string Insert(Student student);
         Student Get(string i);
-        //IQueryable<Student> GetAll();
+        List<Student> GetAll();
         //void Delete(int id);
         //void Update(Student student);
 

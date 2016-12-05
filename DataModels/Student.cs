@@ -26,5 +26,17 @@ namespace DataModels
             return this;
         }
 
+        public MStudent getMStudent()
+        {
+            return new MStudent()
+            {
+                Class = this.Class,
+                Name = this.Name,
+                RollNo = this.RollNo,
+                StudentID = this.StudentID
+            };
+
+        }
+
     }
 }

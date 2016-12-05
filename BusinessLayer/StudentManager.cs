@@ -24,6 +24,25 @@ namespace BusinessLayer
             return new Student().convert(student);
         }
 
-      
+        public List<Student> GetAll()
+        {
+            var mStudent = _sUnitOfwork.GetAll();
+
+            List <Student> student = new List<Student>();
+            foreach(var item in mStudent)
+            {
+                student.Add(new Student().convert(item));
+            }
+
+            return student;
+        }
+
+        public string Insert(Student m )
+        {
+            string id = _sUnitOfwork.Insert(m.getMStudent());
+
+            return id;
+
+        }
     }
 }

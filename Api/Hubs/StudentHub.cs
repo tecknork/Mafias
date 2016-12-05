@@ -10,9 +10,9 @@ namespace Api.Hubs
     [HubName("student")]
     public class StudentHub : Hub
     {
-        public void Hello()
-        {
-            Clients.All.hello();
-        }
+        //public void Hello()
+        //{
+        //    Clients.All.hello();
+        //}
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Api.Hubs;
+using BusinessLayer;
+using DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,17 +10,17 @@ using System.Web.Http;
 
 namespace Api.Controllers
 {
-    public class StudentController : ApiController
+    public class StudentController : HubApiController<StudentHub>
     {
-        private readonly IStudentService _studentService;
+        private readonly StudentManager _studentService;
 
         public StudentController()
         {
-            _studentService = new StudentService();
+            _studentService = new StudentManager();
         }
 
         // GET api/student/id
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(string id)
         {
 
             var student = _studentService.Get(id);
@@ -34,18 +37,20 @@ namespace Api.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
         }
 
-        public void Post([FromBody]Student student)
+        public HttpResponseMessage Post([FromBody]Student student)
         {
-            _studentService.Insert(student);
-
+            var id = _studentService.Insert(student);
+            Hub.Clients.All().addItem(student);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
+           // return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
         }
-        public void Delete(int id)
-        {
-            _studentService.Delete(id);
-        }
-        public void Put([FromBody]Student student)
-        {
-            _studentService.Update(student);
-        }
+        //public void Delete(string id)
+        //{
+        //    _studentService.Delete(id);
+        //}
+        //public void Put([FromBody]Student student)
+        //{
+        //    _studentService.Update(student);
+        //}
     }
 }

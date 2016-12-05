@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 namespace Api.Controllers
 {
-    public class ValuesController : HubApiController<>
+    public class ValuesController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()
